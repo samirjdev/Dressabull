@@ -20,17 +20,18 @@ if not os.path.exists('cropped_faces'):
 # Counter for naming the cropped face images
 face_count = 0
 
-# Crop and save each detected face as a separate image
-for (x, y, w, h) in faces:
+# Process only the first detected face (if any)
+if len(faces) > 0:
+    x, y, w, h = faces[0]  # Get the coordinates of the first detected face
     face = image[y:y + h, x:x + w]
     cv2.imwrite(f'cropped_faces/face_{face_count}.jpg', face)
+    
+    # Draw a rectangle around the first detected face
+    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    
     face_count += 1
 
-# Draw rectangles around detected faces
-for (x, y, w, h) in faces:
-    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-# Display the image with detected faces
+# Display the image with the detected face(s)
 cv2.imshow('Face Detection', image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
