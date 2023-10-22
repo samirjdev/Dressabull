@@ -112,8 +112,11 @@ def categorize_skin_color(rgb_value):
         "dark": euclidean_distance(rgb_value, dark_center),
     }
 
+    
+
     # Find the category with the smallest distance
     closest_category = min(distances, key=distances.get)
+    print(f'SKIN COLOR: {closest_category}')
     return closest_category
 
 

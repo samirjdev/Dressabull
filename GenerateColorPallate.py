@@ -94,7 +94,7 @@ def draw_palette(palette):
     monochromatic_palette = palette
 
     # Display the original color and the monochromatic color palette using matplotlib
-    fig, ax = plt.subplots(figsize=(6, 1))
+    fig, ax = plt.subplots(figsize=(6, 5))
     ax.imshow([monochromatic_palette], aspect='auto')
     ax.set_xticks([])
     ax.set_yticks([])
