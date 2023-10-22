@@ -1,1 +1,1 @@
-(255,219,172)
+/home/max/Downloads/highest_resolution_image.jpg
