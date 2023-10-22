@@ -4,7 +4,7 @@ import cv2
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # Load an image
-image = cv2.imread('Test_Image1.jpeg')
+image = cv2.imread('Test_Image2.jpg')
 
 # Convert the image to grayscale for better detection
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
