@@ -6,7 +6,13 @@ from PIL import Image
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # Load an image
-image = cv2.imread('Test_Image1.jpeg')
+image = cv2.imread('image.png')
+
+# Resize the image to half its original size
+height, width = image.shape[:2]
+new_width = width // 4
+new_height = height // 4
+resized_image = cv2.resize(image, (new_width, new_height))
 
 # Convert the image to grayscale for better detection
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -32,9 +38,9 @@ for (x, y, w, h) in faces:
     cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
 # Display the image with detected faces
-# cv2.imshow('Face Detection', image)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+    cv2.imshow('Face Detection', resized_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 # Path to the folder containing cropped face images
 cropped_faces_folder = 'cropped_faces'
@@ -70,7 +76,6 @@ else:
         # Save the highest-resolution image as a separate image
         save_path = os.path.join(cropped_faces_folder, 'highest_resolution_image.jpg')
         cv2.imwrite(save_path, highest_resolution_image)
-        print(f"Highest resolution image saved as 'highest_resolution_image.jpg' in '{cropped_faces_folder}'.")
     else:
         print("No valid images found in the folder or no higher resolution image detected.")
 
