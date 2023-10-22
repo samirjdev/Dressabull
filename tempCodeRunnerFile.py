@@ -1,1 +1,0 @@
-/home/max/Downloads/highest_resolution_image.jpg
