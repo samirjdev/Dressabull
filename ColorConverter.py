@@ -1,4 +1,4 @@
-fair_colored = {
+fair = {
     "Baby Blue": (173, 216, 230),
     "Light Pink": (255, 182, 193),
     "Lavender": (230, 230, 250),
@@ -21,7 +21,7 @@ fair_colored = {
     "Soft Purple": (180, 131, 149)
 }
 
-medium_colored = {
+medium = {
     "Pale Pink": (255, 228, 225),
     "Soft Blue": (173, 216, 230),
     "Light Lavender": (230, 230, 250),
@@ -44,7 +44,7 @@ medium_colored = {
     "Pearl White": (255, 239, 219)
 }
 
-tan_colored = {
+tan = {
     "Terracotta": (204, 78, 92),
     "Deep Brown": (139, 69, 19),
     "Olive Green": (85, 107, 47),
@@ -66,7 +66,7 @@ tan_colored = {
     "Chocolate Brown": (139, 69, 19),
 }
 
-dark_colored = {
+dark = {
     "Navy Blue": (0, 0, 128),
     "Emerald Green": (0, 128, 0),
     "Sapphire Blue": (0, 0, 255),
@@ -91,6 +91,8 @@ dark_colored = {
 }
 
 import numpy as np
+import random
+
 
 def euclidean_distance(color1, color2):
     return np.linalg.norm(np.array(color1) - np.array(color2))
@@ -104,29 +106,25 @@ def categorize_skin_color(rgb_value):
 
     # Calculate the Euclidean distance from the input color to each center
     distances = {
-        "Fair": euclidean_distance(rgb_value, fair_center),
-        "Medium": euclidean_distance(rgb_value, medium_center),
-        "Tan": euclidean_distance(rgb_value, tan_center),
-        "Dark": euclidean_distance(rgb_value, dark_center),
+        "fair": euclidean_distance(rgb_value, fair_center),
+        "medium": euclidean_distance(rgb_value, medium_center),
+        "tan": euclidean_distance(rgb_value, tan_center),
+        "dark": euclidean_distance(rgb_value, dark_center),
     }
 
     # Find the category with the smallest distance
     closest_category = min(distances, key=distances.get)
     return closest_category
 
-# Example RGB values for skin colors
-skin_color1 = (225, 190, 150)
-skin_color2 = (180, 140, 100)
-skin_color3 = (130, 90, 50)
-skin_color4 = (255,219,172)
 
-# Categorize skin colors
-category1 = categorize_skin_color(skin_color1)
-category2 = categorize_skin_color(skin_color2)
-category3 = categorize_skin_color(skin_color3)
-category4 = categorize_skin_color(skin_color4)
 
-print("Category 1:", category1)
-print("Category 2:", category2)
-print("Category 3:", category3)
-print("Category 4:", category4)
+def get_clothing_color(skin_color):
+    category = globals()[categorize_skin_color(skin_color)]
+    random_key = random.choice(list(category.keys()))
+    random_value = category[random_key]
+    return random_key, random_value
+
+# Example usage:
+# random_key, random_value = get_clothing_color((255,219,172))
+# print(f"Random Color Name: {random_key}")
+# print(f"Random Color RGB: {random_value}")
