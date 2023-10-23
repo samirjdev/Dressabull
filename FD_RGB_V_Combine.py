@@ -2,12 +2,12 @@ import cv2
 import os
 from PIL import Image
 
-def grab_skin_color():
+def grab_skin_color(image):
     # Load the Haar Cascade for face detection
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
     # Load an image
-    image = cv2.imread('/home/max/Downloads/PXL_20231022_194530586.MP.jpg')
+    image = cv2.imread(image)
 
     # Convert the image to grayscale for better detection
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

@@ -12,7 +12,6 @@ def generate_monochromatic_palette(base_color, num_colors=4):
         r, g, b = colorsys.hls_to_rgb(h, brightness, s)
         palette.append((int(r * 255), int(g * 255), int(b * 255)))
 
-    print(palette)
 
     draw_palette(palette)
 
@@ -49,7 +48,7 @@ def generate_split_complementary_palette(base_color, num_colors=4):
         palette.append((int(r * 255), int(g * 255), int(b * 255)))
 
 
-    print(palette)
+
 
     draw_palette(palette)
 
@@ -84,9 +83,8 @@ def generate_triadic_palette(base_color, num_colors=4):
         r, g, b = colorsys.hls_to_rgb(h, brightness, s)
         palette.append((int(r * 255), int(g * 255), int(b * 255)))
 
-    print(palette)
-
     draw_palette(palette)
+    return palette
 
 def draw_palette(palette):
     # Example: Generate a monochromatic color palette based on an RGB color
