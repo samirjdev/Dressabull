@@ -9,13 +9,7 @@ Introducing our AI-powered fashion designer, powered by DALL-E. Our advanced fac
 Install the required dependencies
 
 ```
-pip install openai
-```
-```
-pip install opencv-python
-```
-```
-pip install pillow
+pip install -r requirements.txt
 ```
 
 Then either submit your photo in jpg, jpeg, or png format or run the python scripts locally with your images!
